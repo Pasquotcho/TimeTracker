@@ -1,7 +1,7 @@
 import win32com.client
 from requests import get
 from zipfile import ZipFile
-from os import environ, path, remove, rename
+from os import environ, path, remove, rename, chdir
 from sys import exit
 from subprocess import Popen
 
@@ -38,6 +38,7 @@ def update() -> None:
 
     shortcut = shell.CreateShortcut(f"{desktop_path}/Time Tracker.lnk")
     shortcut.TargetPath = f"{FINISHED_PATH}/Time Tracker.exe"
+    shortcut.WorkingDirectory = FINISHED_PATH
     shortcut.save()
 
     print("Installed")
