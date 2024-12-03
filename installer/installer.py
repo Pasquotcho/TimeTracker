@@ -12,7 +12,7 @@ def update() -> None:
     master_version =  get("https://raw.githubusercontent.com/Pasquotcho/TimeTracker/refs/heads/master/version").text.strip()
 
     print("Downloading...")
-    newfile = get(f"https://github.com/Pasquotcho/TimeTracker/releases/download/{master_version}/Time_Tracker.zip")
+    newfile = get(f"https://github.com/Pasquotcho/TimeTracker/releases/download/{master_version}/Time_Tracker.dist.zip")
     print("Downloaded!")
 
     with open ("dist.zip", "wb") as file:
