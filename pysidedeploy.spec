@@ -40,7 +40,7 @@ qml_files =
 excluded_qml_plugins = 
 
 # qt modules used. comma separated
-modules = Gui,Widgets,Core
+modules = Gui,Core,Widgets
 
 # qt plugins used by the application
 plugins = generic,iconengines,platforminputcontexts,styles,egldeviceintegrations,imageformats,platforms/darwin,accessiblebridge,xcbglintegrations,platformthemes,platforms
