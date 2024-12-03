@@ -5,6 +5,8 @@ from sys import exit
 import zipfile 
 
 master_version:str 
+# Current working directory
+CWD = os.getcwd()
 APP_DATA_PATH:str = os.path.join(os.environ['APPDATA'], 'Time Project PYQT')
 FINISHED_PATH:str = os.path.join(os.environ['APPDATA'], 'Time Project PYQT', "Distribution", "Time_Tracker")
 
@@ -24,28 +26,6 @@ def check_update() -> int:
         print("Version mismatch!")
         return 1
 
-def update():
-
-    print("Downloading...")
-    newfile = requests.get(f"https://github.com/Pasquotcho/TimeTracker/releases/download/{master_version}/Time_Tracker.zip")
-    print("Downloaded!")
-
-    with open ("dist.zip", "wb") as file:
-        file.write(newfile.content)
-
-        with zipfile.ZipFile("dist.zip", "r") as zip_reference:
-            print("Extracting...")
-            zip_reference.extractall(f"{APP_DATA_PATH}/Distribution")
-            print("Extracted!")
-
-    os.remove("dist.zip")
-
-    # opens app in background
-    Popen([f"{FINISHED_PATH}/Time Tracker.exe"])
-
-    # sys exit
+def start_update():
+    Popen(f"{CWD}/installer/installer.exe")
     exit()
-
- 
-    print("Updated!")
-    return 0
