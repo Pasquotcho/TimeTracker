@@ -1,18 +1,17 @@
-import requests
+from requests import get
 from os import chdir, path, getcwd
 from subprocess import Popen
 from version import version
 
-master_version:str 
 # Current working directory
 CWD = getcwd()
 
 def check_update() -> int:
-    global master_version
 
-
-
-    master_version =  requests.get("https://raw.githubusercontent.com/Pasquotcho/TimeTracker/refs/heads/master/version").text.strip()
+    # Get latest Version
+    request:str =  get("https://api.github.com/repos/Pasquotcho/TimeTracker/releases/latest")
+    data:dict = request.json()
+    master_version:str = data["tag_name"]
 
     if version == master_version:
         print("Version up to date!")

@@ -11,8 +11,11 @@ def update() -> None:
     APP_DATA_PATH:str = path.join(environ['APPDATA'], 'Time Project PYQT')
     FINISHED_PATH:str = path.join(environ['APPDATA'], 'Time Project PYQT', "Distribution", "Time_Tracker.dist")
 
-    master_version =  get("https://raw.githubusercontent.com/Pasquotcho/TimeTracker/refs/heads/master/version").text.strip()
-
+    # Get latest Version
+    request:str =  get("https://api.github.com/repos/Pasquotcho/TimeTracker/releases/latest")
+    data:dict = request.json()
+    master_version:str = data["tag_name"]
+    
     print("Downloading...")
     newfile = get(f"https://github.com/Pasquotcho/TimeTracker/releases/download/{master_version}/Time_Tracker.dist.zip")
     print("Downloaded!")
