@@ -6,6 +6,11 @@ style_dict = {
         font-family: 'Roboto', sans-serif;
     }
 
+    QWidget.exclude {
+        color: #e5e5e5;
+        font-family: 'Roboto', sans-serif;
+    }
+
     QLabel {
         font-size: 20px;
         margin-bottom: 12px;
@@ -38,7 +43,7 @@ style_dict = {
     }
 
     QPushButton:pressed {
-        background-color: #156fa1; /* Etwas dunklerer Button, wenn gedrückt */
+        background-color: #156fa1;
     }
 
     QPushButton:disabled {
@@ -102,12 +107,31 @@ style_dict = {
     QCheckBox::indicator:checked:focus {
         border: 2px solid #ffffff;
     }
+
+    QPushButton#update_btn {
+        background-color: red;
+        color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        padding: 12px;
+        font-size: 18px;
+    }    
+
+    QPushButton#update_btn:hover {
+        background-color: darkred;
+    }    
+
     ''',
 "light": '''
     QWidget {
         background-color: #f0f4f8;
         color: #2b3a42;
         font-family: 'Arial', sans-serif;
+    }
+
+    QWidget.exclude {
+        color: #e5e5e5;
+        font-family: 'Roboto', sans-serif;
     }
 
     QLabel {
@@ -206,6 +230,20 @@ style_dict = {
     QCheckBox::indicator:checked:focus {
         border: 2px solid #2b3a42;
     }
+
+    QPushButton#update_btn {
+        background-color: red;
+        color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        padding: 12px;
+        font-size: 18px;
+    }    
+
+    QPushButton#update_btn:hover {
+        background-color: darkred;
+    }    
+  
     ''',
 "girly": '''
     QWidget {
@@ -213,6 +251,11 @@ style_dict = {
         color: #7b2e88;
         font-family: 'Comic Sans MS', sans-serif;
     }
+
+    QWidget.exclude {
+    color: #e5e5e5;
+    font-family: 'Roboto', sans-serif;
+}
 
     QLabel {
         font-size: 22px;
@@ -310,6 +353,20 @@ style_dict = {
     QCheckBox::indicator:checked:focus {
         border: 2px solid #7b2e88;
     }
+
+    QPushButton#update_btn {
+        background-color: red;
+        color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        padding: 12px;
+        font-size: 18px;
+    }    
+
+    QPushButton#update_btn:hover {
+        background-color: darkred;
+    }    
+  
     ''',
 "evil": '''
     QWidget {
@@ -317,6 +374,11 @@ style_dict = {
         color: #e10000;
         font-family: 'Impact', sans-serif;
     }
+
+    QWidget.exclude {
+    color: #e5e5e5;
+    font-family: 'Roboto', sans-serif;
+}
 
     QLabel {
         font-size: 24px;
@@ -414,6 +476,20 @@ style_dict = {
     QCheckBox::indicator:checked:focus {
         border: 2px solid #ffffff;
     }
+
+    QPushButton#update_btn {
+        background-color: red;
+        color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        padding: 12px;
+        font-size: 18px;
+    }    
+
+    QPushButton#update_btn:hover {
+        background-color: darkred;
+    }    
+  
     ''',
 "childish_blue": '''
     QWidget {
@@ -421,6 +497,11 @@ style_dict = {
         color: #007bff;
         font-family: 'Verdana', sans-serif;
     }
+
+    QWidget.exclude {
+        color: #e5e5e5;
+        font-family: 'Roboto', sans-serif;
+    }   
 
     QLabel {
         font-size: 22px;
@@ -518,6 +599,19 @@ style_dict = {
     QCheckBox::indicator:checked:focus {
         border: 2px solid #ffffff;
     }
+
+    QPushButton#update_btn {
+        background-color: red;
+        color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        padding: 12px;
+        font-size: 18px;
+    }
+    
+    QPushButton#update_btn:hover {
+        background-color: darkred;
+    }    
     '''
 
 

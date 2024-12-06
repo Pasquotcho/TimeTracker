@@ -4,7 +4,7 @@ from PySide6 import QtCore, QtWidgets
 from random import choice
 from styles import apply_styles
 from theme_handler import load_theme, save_theme
-
+from updater import check_update, start_update
 
 APP_DATA_PATH:str = os.path.join(os.environ['APPDATA'], 'Time Project PYQT')
 ALL_STYLES = ["dark", "girly", "light", "evil", "childish_blue"]
@@ -33,6 +33,9 @@ class TimeCounterApp(QtWidgets.QWidget):
         self.explanation:QtWidgets.QLabel = QtWidgets.QLabel()
         self.explanation.setObjectName("explanation")
         self.how_long:QtWidgets.QLabel = QtWidgets.QLabel()
+        self.update_button:QtWidgets.QPushButton = QtWidgets.QPushButton("Update Verfügbar!")
+        self.update_button.setObjectName("update_btn")
+        self.update_button.setProperty("class", "exclude")
 
         self.send_button.clicked.connect(self.time_changed)
         self.timer.timeout.connect(self.home_timer)
@@ -51,6 +54,10 @@ class TimeCounterApp(QtWidgets.QWidget):
         self.explanation.hide()
 
         self.layout.addWidget(self.how_long, alignment=align_center)
+
+        ## Update
+        if check_update() == 1:
+            self.layout.addWidget(self.update_button, alignment=align_right)
 
         self.switch_theme:QtWidgets.QPushButton = QtWidgets.QPushButton("Style Ändern")
 
@@ -92,6 +99,9 @@ class TimeCounterApp(QtWidgets.QWidget):
         self.theme_button_layout.addWidget(self.switch_theme, alignment=align_right)
 
         self.switch_theme.clicked.connect(self.theme_button_clicked)
+        
+        #Update Button 
+        self.update_button.clicked.connect(self.update)
      
         if not self.load_data() == 2:
             self.time_changed()
@@ -213,10 +223,6 @@ class TimeCounterApp(QtWidgets.QWidget):
 
     def theme_button_clicked(self) -> None:
         
-        # test_old = self.theme
-        # while test_old == self.theme:
-        #     self.theme:str = choice(all_styles)
-        # self.change_theme(self.theme)
         for i, _ in enumerate(ALL_STYLES, start=1):
             theme:QtWidgets.QPushButton = getattr(self, f"theme_{i}")
             if theme.isHidden():
@@ -225,3 +231,7 @@ class TimeCounterApp(QtWidgets.QWidget):
             else:
                 theme.hide()
                 self.switch_theme.setText("Style Ändern")
+
+    def update(self) -> None:
+        self.close()
+        start_update()

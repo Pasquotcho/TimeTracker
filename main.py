@@ -2,15 +2,10 @@ from PySide6 import QtWidgets
 from widgets import TimeCounterApp
 from PySide6.QtGui import QIcon
 import styles
-from updater import check_update, start_update
 from reload_styles import reload_styles
 from theme_handler import save_theme, load_theme
 
-if __name__ == "__main__":
-   
-    if check_update() == 1: #TODO
-        start_update()
-        
+if __name__ == "__main__":    
     myapp = QtWidgets.QApplication([])
     window = TimeCounterApp()
     reload_styles()
