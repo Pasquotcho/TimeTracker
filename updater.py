@@ -23,5 +23,5 @@ def check_update() -> int:
         return 1
 
 def start_update():
-    Popen(f"{CWD}/installer.exe")
+    Popen("../../installer.exe")
     sys.exit()

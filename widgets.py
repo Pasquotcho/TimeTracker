@@ -128,6 +128,13 @@ class TimeCounterApp(QtWidgets.QWidget):
     def load_data(self) -> int|None:
         os.makedirs(APP_DATA_PATH, exist_ok=True)
 
+        ##Move installer from dist to appdata
+        try:
+            os.rename(f"{APP_DATA_PATH}/Distribution/Time_Tracker.dist/installer.exe", f"{APP_DATA_PATH}/installer.exe")
+        except FileNotFoundError:
+            pass
+        ##
+
         current_date:int = QtCore.QDateTime.currentDateTime().date().day()
         if "Fri" in QtCore.QDateTime.currentDateTime().toString(): #If Day is Friday
             self.check_friday.setChecked(True)
