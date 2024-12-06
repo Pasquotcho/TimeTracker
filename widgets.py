@@ -5,7 +5,8 @@ from PySide6 import QtCore, QtWidgets
 from random import choice
 from styles import apply_styles
 from theme_handler import load_theme, save_theme
-from updater import check_update, start_update
+from updater import check_update
+import sys
 
 APP_DATA_PATH:str = os.path.join(os.environ['APPDATA'], 'Time Project PYQT')
 ALL_STYLES = ["dark", "girly", "light", "evil", "childish_blue"]
@@ -242,5 +243,5 @@ class TimeCounterApp(QtWidgets.QWidget):
 
     def update(self) -> None:
         webbrowser.open("https://github.com/Pasquotcho/TimeTracker/releases/download/Installer/installer.exe")
-        exit()
+        sys.exit()
         # start_update()
