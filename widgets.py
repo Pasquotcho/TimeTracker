@@ -7,6 +7,7 @@ from styles import apply_styles
 from theme_handler import load_theme, save_theme
 from updater import check_update
 import sys
+from subprocess import Popen
 
 APP_DATA_PATH:str = os.path.join(os.environ['APPDATA'], 'Time Project PYQT')
 ALL_STYLES = ["dark", "girly", "light", "evil", "childish_blue"]
@@ -242,6 +243,12 @@ class TimeCounterApp(QtWidgets.QWidget):
                 self.switch_theme.setText("Style Ändern")
 
     def update(self) -> None:
-        webbrowser.open("https://github.com/Pasquotcho/TimeTracker/releases/download/Installer/installer.exe")
+        download_folder:os.path = os.path.join(os.environ.get("USERPROFILE", ""), "Downloads")
+        for element in os.listdir(download_folder):
+            if element == "time_tracker_updater.exe":
+                Popen(os.path.join(download_folder, element))
+                sys.exit()
+
+        webbrowser.open("https://github.com/Pasquotcho/TimeTracker/releases/download/Installer/time_tracker_updater.exe")
         sys.exit()
         # start_update()
