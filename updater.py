@@ -1,4 +1,5 @@
 from requests import get
+import sys
 from os import chdir, path, getcwd
 from subprocess import Popen
 from version import version
@@ -23,4 +24,4 @@ def check_update() -> int:
 
 def start_update():
     Popen(f"{CWD}/installer.exe")
-    exit()
+    sys.exit()
