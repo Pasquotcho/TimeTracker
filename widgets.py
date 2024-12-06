@@ -241,6 +241,6 @@ class TimeCounterApp(QtWidgets.QWidget):
                 self.switch_theme.setText("Style Ändern")
 
     def update(self) -> None:
-        # self.close()
         webbrowser.open("https://github.com/Pasquotcho/TimeTracker/releases/download/Installer/installer.exe")
+        exit()
         # start_update()
