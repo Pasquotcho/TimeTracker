@@ -1,4 +1,5 @@
 import json
+import webbrowser
 import os
 from PySide6 import QtCore, QtWidgets
 from random import choice
@@ -240,5 +241,6 @@ class TimeCounterApp(QtWidgets.QWidget):
                 self.switch_theme.setText("Style Ändern")
 
     def update(self) -> None:
-        self.close()
-        start_update()
+        # self.close()
+        webbrowser.open("https://github.com/Pasquotcho/TimeTracker/releases/download/Installer/installer.exe")
+        # start_update()
