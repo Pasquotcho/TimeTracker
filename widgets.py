@@ -10,7 +10,8 @@ import sys
 from subprocess import Popen
 
 APP_DATA_PATH:str = os.path.join(os.environ['APPDATA'], 'Time Project PYQT')
-ALL_STYLES = ["dark", "girly", "light", "evil", "childish_blue"]
+ALL_STYLES:list = ["dark", "girly", "light", "evil", "childish_blue"]
+GITHUB:str = "https://github.com/Pasquotcho/TimeTracker"
 
 class TimeCounterApp(QtWidgets.QWidget):
     
@@ -131,13 +132,6 @@ class TimeCounterApp(QtWidgets.QWidget):
     def load_data(self) -> int|None:
         os.makedirs(APP_DATA_PATH, exist_ok=True)
 
-        # ##Move installer from dist to appdata
-        # try:
-        #     os.rename(f"{APP_DATA_PATH}/Distribution/Time_Tracker.dist/installer.exe", f"{APP_DATA_PATH}/installer.exe")
-        # except FileNotFoundError:
-        #     pass
-        # ##
-
         current_date:int = QtCore.QDateTime.currentDateTime().date().day()
         if "Fri" in QtCore.QDateTime.currentDateTime().toString(): #If Day is Friday
             self.check_friday.setChecked(True)
@@ -197,7 +191,9 @@ class TimeCounterApp(QtWidgets.QWidget):
     def save_log(self) -> None:
 
         with open(f"{APP_DATA_PATH}/time_protocoll.txt", "a") as file:
-            file.write(f"[{QtCore.QDateTime.currentDateTime().toString()}] -- Arrived: {self.arrived_time.toString()} Expected: {self.expected_time.toString()}\n")
+            file.write(f"[{QtCore.QDateTime.currentDateTime().toString()}]"
+                       f" -- Arrived: {self.arrived_time.toString()}"
+                       f" Expected: {self.expected_time.toString()}\n")
     
 
     def difference_calculator(self) -> None:
@@ -249,6 +245,6 @@ class TimeCounterApp(QtWidgets.QWidget):
                 Popen(os.path.join(download_folder, element))
                 sys.exit()
 
-        webbrowser.open("https://github.com/Pasquotcho/TimeTracker/releases/download/Installer/time_tracker_updater.exe")
+        webbrowser.open(f"{GITHUB}/releases/download/Installer/time_tracker_updater.exe")
         sys.exit()
         # start_update()

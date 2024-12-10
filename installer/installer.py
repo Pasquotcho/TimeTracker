@@ -17,11 +17,11 @@ def update() -> None:
     master_version:str = data["tag_name"]
     
     print("Downloading...")
-    newfile = get(f"https://github.com/Pasquotcho/TimeTracker/releases/download/{master_version}/Time_Tracker.dist.zip")
+    nf = get(f"https://github.com/Pasquotcho/TimeTracker/releases/download/{master_version}/Time_Tracker.dist.zip")
     print("Downloaded!")
 
     with open ("dist.zip", "wb") as file:
-        file.write(newfile.content)
+        file.write(nf.content)
 
         with ZipFile("dist.zip", "r") as zip_reference:
             print("Extracting...")
