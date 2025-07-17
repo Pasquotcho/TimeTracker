@@ -4,8 +4,10 @@ from PySide6.QtGui import QIcon
 import styles
 from reload_styles import reload_styles
 from theme_handler import save_theme, load_theme
+from first_login import make_admin
 
 if __name__ == "__main__":    
+    make_admin()
     myapp = QtWidgets.QApplication([])
     window = TimeCounterApp()
     reload_styles()

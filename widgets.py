@@ -8,6 +8,7 @@ from theme_handler import load_theme, save_theme
 from updater import check_update
 import sys
 from subprocess import Popen
+from first_login import get_first_login
 
 APP_DATA_PATH:str = os.path.join(os.environ['APPDATA'], 'Time Project PYQT')
 ALL_STYLES:list = ["dark", "girly", "light", "evil", "childish_blue"]
@@ -41,6 +42,9 @@ class TimeCounterApp(QtWidgets.QWidget):
         self.update_button.setObjectName("update_btn")
         self.update_button.setProperty("class", "exclude")
 
+        self.auto_button = QtWidgets.QPushButton("Automatisch ausfüllen!")
+        self.auto_button.clicked.connect(self.auto_infill)
+
         self.send_button.clicked.connect(self.time_changed)
         self.timer.timeout.connect(self.home_timer)
         
@@ -53,7 +57,7 @@ class TimeCounterApp(QtWidgets.QWidget):
         self.layout.addWidget(self.time_input, alignment=align_center)
         self.layout.addWidget(self.check_friday, alignment=align_center)
         self.layout.addWidget(self.send_button)
-
+        self.layout.addWidget(self.auto_button, alignment=align_right)
         self.layout.addWidget(self.explanation, alignment=align_center)
         self.explanation.hide()
 
@@ -109,6 +113,12 @@ class TimeCounterApp(QtWidgets.QWidget):
      
         if not self.load_data() == 2:
             self.time_changed()
+
+    def auto_infill(self) -> None:
+        first_ln = get_first_login()
+        first_ln = QtCore.QTime(first_ln.hour, first_ln.minute, first_ln.second)
+        self.time_input.setTime(first_ln)
+        self.time_changed()
 
     def time_changed(self) -> None:
 
